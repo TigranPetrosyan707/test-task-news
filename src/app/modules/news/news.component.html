@@ -1,0 +1,33 @@
+<div class="news-container">
+  <button
+    class="market-button"
+    (click)="filterByType('market')"
+    [class.active]="filterType === 'market'"
+  >
+    Market news
+  </button>
+  <button
+    class="symbol-button"
+    [class.active]="filterType === 'symbol'"
+    (click)="filterByType('symbol')"
+  >
+    Symbol news
+  </button>
+
+  <div>
+    <app-filter-bar
+      *ngIf="filterType === 'symbol'"
+      (filterBySymbol)="filterBySymbol($event)"
+    ></app-filter-bar>
+
+    <ul class="articles-wrapper">
+      <div
+        *ngFor="let article of filteredNews"
+        (click)="openArticle(article.id)"
+      >
+        <p>{{ article.title }}</p>
+        <span>{{ article.createdAt }} | {{ article.author }} | </span>
+      </div>
+    </ul>
+  </div>
+</div>

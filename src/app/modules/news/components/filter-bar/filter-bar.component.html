@@ -1,0 +1,35 @@
+<div class="filter-bar">
+  <div class="search-container">
+    <div class="input-box">
+      <img src="/search.svg" />
+      <input
+        type="text"
+        #inputValue
+        (focus)="openSerchDropDown()"
+        (blur)="showDropdown = false"
+      />
+      <div class="search-dropdown" *ngIf="showDropdown">
+        <h5>Recent searches</h5>
+        <ul *ngIf="searchedQueries.length > 0; else noQueries">
+          <li *ngFor="let query of searchedQueries">
+            <p>{{ query }}</p>
+            <p>Description</p>
+            <p>Exchange</p>
+          </li>
+        </ul>
+        <ng-template #noQueries>
+          <p class="empty-search">No recent searches</p>
+        </ng-template>
+      </div>
+    </div>
+    <button class="add-symbol" (click)="addSymbol(inputValue)">
+      + Add symbol
+    </button>
+  </div>
+  <div class="added-symbols" *ngIf="addedSymbols.length">
+    <button *ngFor="let symbol of addedSymbols">
+      {{ symbol }}
+      <span (click)="removeSymbol(symbol)">x</span>
+    </button>
+  </div>
+</div>

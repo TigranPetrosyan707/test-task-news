@@ -1,7 +1,10 @@
 <div *ngIf="article" class="article-container">
   <div class="article-content">
     <h1>{{ article.title }}</h1>
-    <span> {{ article.createdAt }} | {{ article.author }} | </span>
+    <span>
+      {{ article.createdAt }} | {{ article.author }} |
+      {{ article.tickers.join(',') }}</span
+    >
     <div [innerHtml]="article.content"></div>
   </div>
 </div>

@@ -8,8 +8,8 @@
   </button>
   <button
     class="symbol-button"
-    [class.active]="filterType === 'symbol'"
     (click)="filterByType('symbol')"
+    [class.active]="filterType === 'symbol'"
   >
     Symbol news
   </button>
@@ -26,7 +26,10 @@
         (click)="openArticle(article.id)"
       >
         <p>{{ article.title }}</p>
-        <span>{{ article.createdAt }} | {{ article.author }} | </span>
+        <span
+          >{{ article.createdAt }} | {{ article.author }} |
+          {{ article.tickers.join(',') }}</span
+        >
       </div>
     </ul>
   </div>

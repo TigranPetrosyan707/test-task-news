@@ -11,10 +11,9 @@ import { NewsService } from '../../services/news.service';
 export class NewsComponent implements OnInit {
   news: IArticle[] = [];
   filteredNews: IArticle[] = [];
-  filterType: 'market' | 'symbol' = 'symbol';
+  filterType: 'market' | 'symbol' = 'market';
   searchedQueries: string[] = [];
   showDropdown: boolean = false
-  tickerInfo: string = ''
   
   constructor(private _newsService: NewsService, private _router: Router) {}
 
